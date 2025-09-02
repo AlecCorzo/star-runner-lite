@@ -4,7 +4,7 @@ export class KeyboardInputAdapter extends IInputAdapter {
   attach(k, actions) {
     const cleanups = [];
 
-    // helper: asegura que solo guardamos funciones válidas
+
     function add(handler) {
       if (typeof handler === "function") {
         cleanups.push(handler);

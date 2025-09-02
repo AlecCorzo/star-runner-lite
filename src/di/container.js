@@ -1,8 +1,4 @@
 
-/**
- * Contenedor IoC súper simple.
- * Registra fábricas e inyecta dependencias por clave.
- */
 export class Container {
   constructor() { this._map = new Map(); }
   register(key, factory) { this._map.set(key, factory); }

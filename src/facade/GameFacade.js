@@ -1,8 +1,3 @@
-
-/**
- * Facade que centraliza la lógica de alto nivel del juego.
- * start(), restart(), saveScore(), setCharacter(), showMenu(), showHighScores()
- */
 export class GameFacade {
   constructor({ k, scoreService, inputAdapter }) {
     this.k = k;
