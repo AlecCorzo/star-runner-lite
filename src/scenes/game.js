@@ -7,10 +7,10 @@ export function defineGameScene(k, game) {
 
     k.setGravity(CONFIG.gravity);
 
-    // Layers
+ 
     k.add([k.rect(k.width(), k.height()), k.color(13, 15, 26), k.pos(0, 0)]);
 
-    // Ground
+
     const ground = k.add([
       k.rect(k.width(), 32),
       k.pos(0, k.height() - 32),
@@ -19,9 +19,9 @@ export function defineGameScene(k, game) {
       k.color(40, 44, 52),
     ]);
 
-    // Player
+
     const player = k.add([
-      k.sprite(charKey), // 👈 usa el sprite según el personaje
+      k.sprite(charKey), 
       k.sprite(charKey, { width: 50, height: 50 }),
       k.pos(60, k.height() - 80),
       k.area(),
@@ -82,7 +82,7 @@ export function defineGameScene(k, game) {
     const obstacleTimer = k.loop(CONFIG.spawn.obstacleEvery, addObstacle);
     const coinTimer = k.loop(CONFIG.spawn.coinEvery, addCoin);
 
-    // Input via Adapter
+
     const detach = game.inputAdapter.attach(k, {
       left() {
         if (player.alive) player.move(-player.speed, 0);
@@ -91,7 +91,7 @@ export function defineGameScene(k, game) {
         if (player.alive) player.move(player.speed, 0);
       },
       stop() {
-        /* friction handled by kaboom */
+   
       },
       jump() {
         if (player.alive && player.isGrounded()) player.jump(player.jumpPower);
@@ -100,12 +100,12 @@ export function defineGameScene(k, game) {
         k.go("menu");
       },
     });
-    // Store detach to cleanup on scene end
+
     k.onSceneLeave(() => {
       if (detach) detach();
     });
 
-    // Collisions
+
     player.onCollide("coin", (c) => {
       c.destroy();
       player.score += CONFIG.coinValue;
@@ -118,7 +118,7 @@ export function defineGameScene(k, game) {
       obstacleTimer.cancel();
       coinTimer.cancel();
 
-      // Save score
+
       try {
         const name =
           window.prompt("¡Game Over! Ingresa tu nombre:", "Anon") || "Anon";
@@ -130,7 +130,7 @@ export function defineGameScene(k, game) {
     });
   });
 
-  // Game Over scene
+
   k.scene("gameover", ({ score, character }) => {
     k.add([
       k.text("GAME OVER", { size: 36 }),
