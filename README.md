@@ -74,7 +74,20 @@ star-runner-lite/
 - **Enter** confirmar
 
 ## Evidencia Conflicto resuelto 
-![Texto alternativo](
+![Texto alternativo](https://github.com/AlecCorzo/star-runner-lite/blob/main/ImgError.jpeg)
+
+El repositorio remoto estaba configurado con HTTPS en lugar de SSH, lo que generaba solicitudes de usuario/contraseña al hacer git push.
+
+Causa:
+El repo seguía apuntando a la URL HTTPS aunque ya se había configurado la autenticación por llave SSH.
+
+Solución:
+Se cambió el remoto a SSH con:
+```bash
+git remote set-url origin git@github.com:AlecCorzo/star-runner-lite.git
+```
+
+y se verificó con git remote -v. Después de esto, los git push funcionan sin pedir credenciales.
 
 ## 📜 Licencia
 
