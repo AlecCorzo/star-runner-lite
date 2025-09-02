@@ -1,11 +1,10 @@
 import { IInputAdapter } from "./IInputAdapter.js";
 
-/** Simula entradas (útil para pruebas o demo automática). */
 export class SimulatedInputAdapter extends IInputAdapter {
   attach(k, actions) {
     const cleanups = [];
 
-    // helper para asegurar funciones válidas
+    
     function add(handler) {
       if (typeof handler === "function") {
         cleanups.push(handler);
@@ -14,7 +13,7 @@ export class SimulatedInputAdapter extends IInputAdapter {
 
     let dir = 1;
 
-    // bucle que simula movimiento y saltos
+
     add(
       k.loop(0.2, () => {
         if (Math.random() < 0.05) dir *= -1;
@@ -25,7 +24,6 @@ export class SimulatedInputAdapter extends IInputAdapter {
       })
     );
 
-    // devolver función para limpiar
     return () => {
       cleanups.forEach((off) => {
         if (typeof off === "function") off();
