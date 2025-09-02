@@ -11,7 +11,6 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-
 const publicDir = path.join(__dirname, "..", "src");
 const dataFile = path.join(__dirname, "scores.json");
 
@@ -21,6 +20,7 @@ app.use(express.json());
 
 
 app.use(express.static(publicDir));
+
 
 async function ensureData() {
   try {
@@ -34,7 +34,6 @@ async function ensureData() {
   }
 }
 await ensureData();
-
 
 async function readScores() {
   const raw = await fs.readFile(dataFile, "utf-8");
@@ -80,7 +79,11 @@ app.post("/api/scores", async (req, res) => {
   }
 });
 
-app.get("*", (_req, res) => {
+
+app.use((req, res, next) => {
+  if (req.path.includes(".")) {
+    return next(); 
+  }
   res.sendFile(path.join(publicDir, "index.html"));
 });
 

@@ -1,5 +1,10 @@
 {
-"scores":[
-    
-]
+  "scores": [
+    {
+      "name": "Fer",
+      "score": 110,
+      "character": "cat",
+      "dt": "2025-09-02T07:37:25.771Z"
+    }
+  ]
 }
