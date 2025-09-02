@@ -73,6 +73,9 @@ star-runner-lite/
 - **Esc** menú
 - **Enter** confirmar
 
+## Evidencia Conflicto resuelto 
+![Texto alternativo](
+
 ## 📜 Licencia
 
 Alec Fabian Corzo
